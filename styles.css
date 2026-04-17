@@ -1,0 +1,311 @@
+:root {
+  --night: #09111c;
+  --night-2: #13253d;
+  --hay: #f6e7b2;
+  --mint: #87f4d0;
+  --peach: #ffb36b;
+  --red: #ff6f61;
+  --sky: #7ad5ff;
+  --panel: rgba(7, 16, 27, 0.82);
+  --panel-strong: rgba(8, 14, 24, 0.93);
+  --line: rgba(246, 231, 178, 0.18);
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--hay);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(122, 213, 255, 0.18), transparent 25%),
+    radial-gradient(circle at top right, rgba(255, 179, 107, 0.12), transparent 22%),
+    linear-gradient(180deg, #081018 0%, #10233a 50%, #081018 100%);
+}
+
+.page-shell {
+  width: min(1180px, calc(100vw - 28px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.hero-card,
+.game-panel,
+.sidebar-card,
+.info-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 40px var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 20px;
+  padding: 26px;
+  border-radius: 28px;
+  margin-bottom: 20px;
+}
+
+.eyebrow,
+.panel-kicker,
+.stat-label {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: var(--sky);
+}
+
+h1,
+h2,
+h3,
+.hero-text,
+.small-note,
+.metric-list p,
+.flat-list,
+.info-card p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.95;
+  margin-bottom: 14px;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+h3 {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+}
+
+.hero-text {
+  max-width: 60ch;
+  line-height: 1.55;
+  color: rgba(246, 231, 178, 0.88);
+}
+
+.hero-actions,
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-actions {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--hay);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button.primary {
+  background: linear-gradient(135deg, var(--peach), #ff8c77);
+  color: #1d1308;
+}
+
+.button.secondary {
+  background: rgba(122, 213, 255, 0.12);
+  border-color: rgba(122, 213, 255, 0.28);
+}
+
+.button.ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(246, 231, 178, 0.18);
+}
+
+.hero-stats {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+}
+
+.stat-card {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px;
+}
+
+.play-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.85fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.game-panel {
+  border-radius: 28px;
+  padding: 18px;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.status-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: end;
+}
+
+.status-badge {
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(246, 231, 178, 0.18);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  border: 1px solid rgba(246, 231, 178, 0.18);
+  background: #081018;
+  image-rendering: pixelated;
+}
+
+.control-row {
+  margin-top: 14px;
+}
+
+.sidebar {
+  display: grid;
+  gap: 18px;
+}
+
+.sidebar-card,
+.info-card {
+  border-radius: 24px;
+  padding: 18px;
+}
+
+.toolbar {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.tool-button {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(246, 231, 178, 0.18);
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: var(--hay);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.tool-button span {
+  display: inline-block;
+  margin-top: 4px;
+  color: rgba(246, 231, 178, 0.75);
+  font-size: 0.94rem;
+}
+
+.tool-button:hover,
+.tool-button.selected {
+  transform: translateY(-1px);
+  border-color: rgba(135, 244, 208, 0.65);
+  background: rgba(135, 244, 208, 0.12);
+}
+
+.small-note {
+  color: rgba(246, 231, 178, 0.76);
+  line-height: 1.45;
+}
+
+.metric-list {
+  display: grid;
+  gap: 10px;
+  line-height: 1.45;
+}
+
+.flat-list {
+  padding-left: 18px;
+  line-height: 1.6;
+  color: rgba(246, 231, 178, 0.9);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.info-card p:last-child {
+  color: rgba(246, 231, 178, 0.8);
+  line-height: 1.55;
+}
+
+@media (max-width: 980px) {
+  .hero-card,
+  .play-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-badges {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100vw - 12px, 1180px);
+    padding-top: 12px;
+  }
+
+  .hero-card,
+  .game-panel,
+  .sidebar-card,
+  .info-card {
+    border-radius: 20px;
+  }
+
+  .panel-head {
+    flex-direction: column;
+  }
+}
