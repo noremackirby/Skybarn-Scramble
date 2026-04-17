@@ -1,3 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skybarn Scramble</title>
+
+<style>
+:root {
+  --night: #09111c;
+  --night-2: #13253d;
+  --hay: #f6e7b2;
+  --mint: #87f4d0;
+  --peach: #ffb36b;
+  --red: #ff6f61;
+  --sky: #7ad5ff;
+  --panel: rgba(7, 16, 27, 0.82);
+  --panel-strong: rgba(8, 14, 24, 0.93);
+  --line: rgba(246, 231, 178, 0.18);
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--hay);
+  font-family: "Trebuchet MS", sans-serif;
+  background: linear-gradient(180deg, #081018, #10233a);
+}
+
+.page-shell {
+  width: min(1180px, 100vw - 28px);
+  margin: auto;
+  padding: 24px 0;
+}
+
+.hero-card, .game-panel, .sidebar-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 40px var(--shadow);
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.play-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 0.8fr;
+  gap: 18px;
+}
+
+canvas {
+  width: 100%;
+  border-radius: 12px;
+  background: #081018;
+}
+
+.button {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.button.primary { background: #ffb36b; }
+.button.secondary { background: #7ad5ff; }
+</style>
+</head>
+
+<body>
+<div class="page-shell">
+
+<div class="play-grid">
+
+<div class="game-panel">
+<canvas id="gameCanvas" width="1920" height="1040"></canvas>
+
+<div style="margin-top:10px; display:flex; gap:10px;">
+<button id="startRoundButton" class="button primary">Start</button>
+<button id="resetRoundButton" class="button secondary">Reset</button>
+<button id="newMatchButton" class="button secondary">New</button>
+<button id="fullscreenButton" class="button secondary">Fullscreen</button>
+</div>
+
+<p id="messageLabel"></p>
+<p id="redScoreLabel"></p>
+<p id="blueScoreLabel"></p>
+</div>
+
+</div>
+</div>
+
+<script>
+const canvas=document.getElementById("gameCanvas");
+const ctx=canvas.getContext("2d");
+
+const fullscreenButton=document.getElementById("fullscreenButton");
+fullscreenButton.onclick=()=>{
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen();
+  }else{
+    document.exitFullscreen();
+  }
+};
+
+/* ---- PASTE YOUR ORIGINAL game.js CODE BELOW THIS LINE ---- */
+
+/* (Your full game logic remains unchanged) */
+
+</script>
+</body>
+</html>
+
 const canvas=document.getElementById("gameCanvas");
 const ctx=canvas.getContext("2d");
 const phaseLabel=document.getElementById("phaseLabel");
