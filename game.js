@@ -1,3 +1,5 @@
+console.log("GAME JS LOADED");
+console.log("CANVAS:", document.getElementById("gameCanvas"));
 const canvas=document.getElementById("gameCanvas");
 const ctx=canvas.getContext("2d");
 const phaseLabel=document.getElementById("phaseLabel");
