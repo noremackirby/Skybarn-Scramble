@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skybarn Scramble Map Maker</title>
+  <link rel="stylesheet" href="map-maker.css">
+</head>
+<body>
+  <main class="maker-shell">
+    <header class="maker-hero">
+      <div>
+        <p class="kicker">Standalone editor</p>
+        <h1>Skybarn Scramble Map Maker</h1>
+        <p class="lead">This builder now runs outside the main game, so the match screen stays lighter. Saved maps still appear back in the base game automatically.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button secondary" href="index.html">Back To Game</a>
+      </div>
+    </header>
+
+    <section class="maker-layout">
+      <div class="maker-panel">
+        <div class="card">
+          <h2>Map Setup</h2>
+          <div class="form-grid">
+            <label>
+              <span>Name</span>
+              <input id="mapNameInput" type="text" placeholder="My cursed stage">
+            </label>
+            <label>
+              <span>Orientation</span>
+              <select id="orientationInput">
+                <option value="horizontal">Horizontal</option>
+                <option value="vertical">Vertical</option>
+              </select>
+            </label>
+            <label>
+              <span>Width (tiles)</span>
+              <input id="colsInput" type="number" min="12" max="160" value="56">
+            </label>
+            <label>
+              <span>Height (tiles)</span>
+              <input id="rowsInput" type="number" min="12" max="90" value="26">
+            </label>
+            <label class="wide">
+              <span>Sky Colors (#hex,#hex)</span>
+              <input id="skyInput" type="text" value="#10253d,#2d4c67">
+            </label>
+          </div>
+          <div class="row-actions">
+            <button id="applySizeButton" class="button secondary" type="button">Apply New Size</button>
+            <button id="clearMapButton" class="button ghost" type="button">Clear Map</button>
+            <button id="newMapButton" class="button ghost" type="button">New Blank Map</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Tools</h2>
+          <div id="toolButtons" class="tool-grid">
+            <button class="tool-button selected" data-tool="platform" type="button">Platform</button>
+            <button class="tool-button" data-tool="erase" type="button">Erase</button>
+            <button class="tool-button" data-tool="goal" type="button">Goal</button>
+            <button class="tool-button" data-tool="red" type="button">Red Spawn</button>
+            <button class="tool-button" data-tool="blue" type="button">Blue or Green Spawn</button>
+            <button class="tool-button" data-tool="story" type="button">Story Spawn</button>
+            <button class="tool-button" data-tool="trap" type="button">Trap Brush</button>
+          </div>
+          <div class="form-grid lower-gap">
+            <label>
+              <span>Trap</span>
+              <select id="trapSelect"></select>
+            </label>
+            <label>
+              <span>Rotation</span>
+              <select id="rotationSelect">
+                <option value="0">0 deg</option>
+                <option value="90">90 deg</option>
+                <option value="180">180 deg</option>
+                <option value="270">270 deg</option>
+              </select>
+            </label>
+          </div>
+          <p class="note">Use the gold story spawn for solo story maps so the AI or second runner never bumps into that route by accident.</p>
+        </div>
+
+        <div class="card">
+          <div class="board-head">
+            <h2>Editor Board</h2>
+            <p id="boardMeta" class="note">56 x 26 tiles</p>
+          </div>
+          <div id="board" class="board" aria-label="Map builder board"></div>
+        </div>
+
+        <div class="card">
+          <div class="row-actions">
+            <button id="saveMapButton" class="button primary" type="button">Save Map</button>
+            <button id="duplicateMapButton" class="button secondary" type="button">Save As Copy</button>
+          </div>
+          <p id="statusLabel" class="note">Saved custom maps will show up in the game menu.</p>
+        </div>
+      </div>
+
+      <aside class="maker-sidebar">
+        <div class="card">
+          <h2>Saved Custom Maps</h2>
+          <p class="note">Load one to edit it, or delete it here. These are the same maps the base game reads.</p>
+          <div id="savedMapList" class="saved-list"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="map-maker.js"></script>
+</body>
+</html>
